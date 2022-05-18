@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,16 +14,13 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('course_title');
-            $table->text('course_desc');
-            $table->string('course_img_link');
-            $table->string('price');
-            $table->text('cta_link');
-            $table->unsignedBigInteger('course_cat_id')->nullable();
-
+            $table->string('course_title')->nullable();
+            $table->text('course_desc')->nullable();
+            $table->string('course_img_link')->nullable();
+            $table->string('price')->nullable();
+            $table->string('cat')->nullable();
+            $table->text('cta_link')->nullable();
             $table->timestamps();
-            $table->foreign('course_cat_id')->references('id')->on('course_cats')->onDelete('cascade');
-
         });
     }
 
