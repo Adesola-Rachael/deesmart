@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.pageCon')
 @section('content')
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex justify-content-center align-items-center">

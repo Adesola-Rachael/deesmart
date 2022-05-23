@@ -1,5 +1,5 @@
 
-<@extends('layouts.app')
+<@extends('layouts.pageCon')
 @section('content')
 
   <main id="main">

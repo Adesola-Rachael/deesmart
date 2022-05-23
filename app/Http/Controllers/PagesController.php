@@ -19,4 +19,5 @@ class PagesController extends Controller
     public function course(){
         return  view('courses');
     }
+   
 }
