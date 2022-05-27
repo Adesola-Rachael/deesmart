@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\cat;
+use App\Models\category ;
 use App\Models\course;
 use Validator,Response;
 
@@ -12,7 +12,7 @@ class CourseController extends Controller
     //
 
     public function adminCourse(){
-        $cats=cat::get();
+        $cats=category::get();
         $courses=course::get();
         return  view('admin_section/courses',compact('cats','courses'));
     }

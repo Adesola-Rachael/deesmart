@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\cat;
+use App\Models\category;
 use App\Models\course;
 use Validator,Response;
 class AdminController extends Controller
@@ -14,24 +14,24 @@ class AdminController extends Controller
     //     $courses=course::get();
     //     return  view('cube/course',compact('cats','courses'));
     // }
-    public function adminCourse(){
-        $cats=cat::get();
-        $courses=course::get();
-        return  view('admin_section/courses',compact('cats','courses'));
-    }
+    // public function adminCourse(){
+    //     $cats=cegory ::get();
+    //     $courses=course::get();
+    //     return  view('admin_section/courses',compact('cats','courses'));
+    // }
 
-    public function adminHome(){
-        return  view('cube/index');
-    }
+    // public function adminHome(){
+    //     return  view('cube/index');
+    // }
     public function NewAdminHome(){
         return  view('admin_section/index');
     }
     
-    public function cat(){
-        $cats=cat::get();
-        return  view('admin_section/cat',compact('cats'));
-    }
-    // public function course(){
+   
+    // public function course(){ // public function cat(){
+    //     $cats=cat::get();
+    //     return  view('admin_section/cat',compact('cats'));
+    // }
     //     return  view('cube/course');
     // }
 

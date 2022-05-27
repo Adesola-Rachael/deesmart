@@ -20,4 +20,9 @@ class course extends Model
          return $this->belongsTo(Cat::class);
     }
 
+    public function category()
+    {
+         return $this->belongsTo(category ::class);
+    }
+
 }

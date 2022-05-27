@@ -1,11 +1,12 @@
 <!-- ======= Footer ======= -->
 <footer id="footer">
+  <div id="download_success_message"></div>
 
 <div class="footer-top">
   <div class="container">
     <div class="row">
 
-      <div class="col-lg-3 col-md-6 footer-contact">
+      <div class="col-md-2 col-sm-6 footer-contact">
         <h3>Mentor</h3>
         <p>
           A108 Adam Street <br>
@@ -16,7 +17,7 @@
         </p>
       </div>
 
-      <div class="col-lg-2 col-md-6 footer-links">
+      <div class="col-md-2 col-sm-6 footer-links">
         <h4>Useful Links</h4>
         <ul>
           <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
@@ -27,7 +28,7 @@
         </ul>
       </div>
 
-      <div class="col-lg-3 col-md-6 footer-links">
+      <div class="col-md-2 col-sm-6 footer-links">
         <h4>Our Services</h4>
         <ul>
           <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
@@ -38,7 +39,7 @@
         </ul>
       </div>
 
-      <div class="col-lg-4 col-md-6 footer-newsletter">
+      <div class="col-md-4 col-sm-6 ">
         <h4>Join Our Newsletter</h4>
         <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
         <form action="" method="post">
@@ -78,14 +79,103 @@
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 <!-- Vendor JS Files -->
-<script src="assets/vendor/purecounter/purecounter.js"></script>
-<script src="assets/vendor/aos/aos.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="assets/vendor/php-email-form/validate.js"></script>
 
+<script src="{{asset('assets/js/jquery/jquery.min.js')}}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="{{asset('assets/js/jquery-ui/jquery-ui.min.js')}}"></script>
+
+<script>
+
+// create new main_cat
+$(document).on('click', '#sendmail',function(e){
+    e.preventDefault();
+     console.log('connected')
+    
+     $('#SendEmailModal').modal('show');
+});
+
+$(document).on('click', '.SendEmail',function(){
+   var download=$("#downloadEmail").serialize();
+  console.log();
+   console.log(download);
+
+  $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $.ajax({
+    url:"/new-email",
+    type:"POST",
+    // data:cat,
+    success:function(response){
+      console.log(response);
+      $('#SendEmailModal').modal('hide');
+      if(response.status==200){
+        $('#download_success_message').html(
+        '<div class="alert alert-success alert-dismissible">'+
+        '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
+        '<h5><i class="icon fas fa-thumbs-up"></i>' +response.message+
+        '</h5></div>'
+        );
+        // window.location="book_book";
+      }else{
+        console.log(response.message);
+        var message=JSON.stringify(response.message)
+        $('#download_success_message').html(
+        '<div class="alert alert-danger alert-dismissible">'+
+        '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
+        '<h5><i class="icon fas fa-ban"></i>Error!</h5>' +message+
+        '</div>'
+        );
+      }
+     
+    }
+  });
+});
+
+  
+
+</script>
+
+
+<script src="{{asset('assets/vendor/purecounter/purecounter.js')}}"></script>
+<script src="{{asset('assets/vendor/aos/aos.js')}}"></script>
+<script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+
+<script src="{{asset('assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+<script src="{{asset('assets/vendor/php-email-form/validate.js')}}"></script>
+
+
+
+
+<script src="{{asset('book_assets/js/vendor/modernizr-3.5.0.min.js')}}"></script>
+<script src="{{asset('book_assets/js/vendor/jquery-1.12.4.min.js')}}"></script>
+<script src="{{asset('book_assets/js/popper.min.js')}}">
+<script>eval(mod_pagespeed_64J4x1U9Lt);</script>
+
+<script src="{{asset('book_assets/js/owl.js')}}"></script><script>eval(mod_pagespeed_2b_kILWYuf);</script>
+<script>eval(mod_pagespeed_YcgqpOO3k2);</script>
+<script src="{{asset('book_assets/js/slick.js')}}"></script><script>eval(mod_pagespeed_W070UA44Fy);</script>
+
+<script>eval(mod_pagespeed_HHFEHFyfva);</script>
+<script>eval(mod_pagespeed_He4JmNoJSL);</script>
+<script>eval(mod_pagespeed_Vq55GYBaD4);</script>
+<script>eval(mod_pagespeed_urzCQ$ljEK);</script>
+<script>eval(mod_pagespeed_yBL9chaY8Z);</script>
+<script src="{{asset('book_assets/js/price_range.js')}}"></script><script>eval(mod_pagespeed_6gHvth7EP8);</script>
+
+<script>eval(mod_pagespeed_gVyWNPnP1a);</script>
+<script src="{{asset('book_assets/js/form.js')}}"></script><script>eval(mod_pagespeed_WxueWYkioV);</script>
+<script>eval(mod_pagespeed_JeTX5oy9W7);</script>
+<script>eval(mod_pagespeed_Dfx$DMKuSV);</script>
+<script>eval(mod_pagespeed_In2a_xtXil);</script>
+
+<script>eval(mod_pagespeed_ADDajFRwXo);</script>
+<script>eval(mod_pagespeed_R473QNJAOB);</script>
 <!-- Template Main JS File -->
-<script src="assets/js/main.js"></script>
+<script src="{{asset('assets/js/main.js')}}"></script>
 
 </body>
 

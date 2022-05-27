@@ -3,9 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PagesController;
-use App\Http\Controllers\CourseController;
-use App\Http\Controllers\CourseCatController;
+// use App\Http\Controllers\CourseController;
+// use App\Http\Controllers\CourseCatController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SendEmailController;
+use App\Http\Controllers\BookController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +35,9 @@ Route::get('/index',[PagesController::class,'home'] );
 Route::get('/contact',[PagesController::class,'contact'] );
 Route::get('/about',[PagesController::class,'about'] );
 Route::get('courses',[PagesController::class,'course'] );
+Route::get('book',[PagesController::class,'books'] );
+Route::get('book_details/{id}',[PagesController::class,'details'] );
+
 
 // Admin pages route
 Route::get('/cube/index',[AdminController::class,'adminHome'] );
@@ -49,15 +55,38 @@ Route::put('/updateCourse/{id}',[CourseController::class, 'updateCourse']);
 
 
 
+// ORIGINAL
 // category route
 
 Route::get('/admin_section/cat',[CategoryController::class,'cat'] );
 Route::post('/cat',[CategoryController::class, 'Createcat']);
-Route::get('/getcatById/{id}',[CourseCatController::class, 'getcatId']);
+Route::get('/getcatById/{id}',[CategoryController::class, 'getcatId']);
 Route::put('/delete-cat/{id}',[CategoryController::class, 'TrashCategory(']);
 Route::put('/updatecat{id}',[CourseCatController::class, 'updatecat']);
 
 
+// book
+Route::get('/admin_section/books',[BookController::class,'adminCourse'] );
+//  Route::get('/cube/course',[BookController::class,'course'] );
+ Route::post('/course',[BookController::class, 'CreateCourse']);
+Route::get('/getBookById/{id}',[BookController::class, 'getbookId']);
+// Route::get('/delete-course/{id}',[CourseController::class, 'deletecourse']);
+// Route::put('/updateCourse/{id}',[CourseController::class, 'updateCourse']);
 
-// course
+
+
+// Email
+
+Route::get('send-email', [SendEmailController::class, 'index']);
+
+Route::post('new-email', [SendEmailController::class, 'downloadEmail']);
+
+// Route::get('new-email', function () {
+// $download = [
+// 'title' => 'Mail from ItSolutionStuff.com',
+// 'body' => 'This is for testing email using smtp'
+// ];
+// \Mail::to('gtreasure162@gmail.com')->send(new \App\Mail\download($download));
+// dd("Email is Sent.");
+// });
 

@@ -9,9 +9,9 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a class="active" href="{{url('about')}}">About</a></li>
-          <li><a href="{url('/courses')}">Courses</a></li>
-          <li><a href="{url('/contact)}">Contact</a></li>
+          <li><a class="active" href=" {{url('about')}} ">About</a></li>
+          <li><a href="{{url('courses')}} ">Courses</a></li>
+          <li><a href="{{url('contact')}} ">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

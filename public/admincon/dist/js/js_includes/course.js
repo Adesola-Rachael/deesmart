@@ -7,19 +7,22 @@ $(document).on('click', '#addcourse',function(e){
 });
 
 $(document).on('click', '.AddNewcourse',function(){
-  var course=$("#course").serialize();
+  var course=new FormData($("#course")[0]);
   console.log(course);
 //   console.log("clicked");
 
   $.ajaxSetup({
     headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') 
     }
   });
   $.ajax({
     url:"/course",
     type:"POST",
     data:course,
+    dataType:"json",
+    contentType: false, 
+    processData: false, 
     success:function(response){
       console.log(response);
       $('#AddCourseModal').modal('hide');
@@ -55,7 +58,7 @@ $(document).on('click', '#edit_course', function(e){
     $('#EditCourseModal').modal('show');
     $.ajax({
     type: "GET",
-    url:"/getCourseById/"+course_id,
+    url:"/getBookById/"+course_id,
       dataType:"json",
     success:function(response){
       console.log(response);
@@ -236,7 +239,7 @@ $(document).on('click', '#viewCourse', function(e){
     function fetch_data(){
     $.ajax({
     type: "GET",
-    url:"/getCourseById/"+course_id,
+    url:"/getBookById/"+course_id,
       dataType:"json",
     success:function(response){
       console.log(response)
@@ -247,10 +250,10 @@ $(document).on('click', '#viewCourse', function(e){
           '<div class="row">'+
             '<div class="col-md-6">'+
               '<h5> Course Title</h5>'+
-            '<p>'+response.data.course_title+'</p>'+
+            '<p>'+response.data.book_title+'</p>'+
                 // description
               '<h5>Course Description</h5>'+
-              '<p>'+response.data.course_desc+'</p>'+
+              '<p>'+response.data.book_desc+'</p>'+
               // price
               '<h5>Course Price</h5>'+
               '<p>'+response.data.price+'</p>'+

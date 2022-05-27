@@ -17,22 +17,27 @@
         
         <div class="form-group mb-3">
             <label for="course">Course Title</label>
-            <input type="text" name="course_title" placeholder="Enter The Course Title" id="course_title" class="course_title form-control">
+            <input type="text" name="book_title" placeholder="Enter The Course Title" id="course_title" class="course_title form-control">
             <!-- <input type="text" name="course" id="course" class="course form-control"> -->
         </div> 
         <div class="form-group mb-3">
             <label for="name">Course Description</label>
-            <textarea name="course_desc" id="course_desc" placeholder="Enter The Course Description" col="5" class="course_desc form-control"></textarea>
+            <textarea name="book_desc" id="course_desc" placeholder="Enter The Course Description" col="5" class="course_desc form-control"></textarea>
         </div>
 
         <div class="form-group mb-3">
-            <label for="name">course Image Link</label>
-            <input type="text" name="course_img_link" id="course_img_link" class="course_img_link form-control">
+            <label for="name">Book Cover</label>
+            <input type="file" name="book_cover" id="course_img_link" class="course_img_link form-control">
         </div>
 
         <div class="form-group mb-3">
-            <label for="name">Course Price</label>
-            <input type="text" name="price" id="price" value="Free" class="price form-control">
+            <label for="name">Book File(pdf,docx,doc)</label>
+            <input type="file" name="book_file" id="course_img_link" class="course_img_link form-control">
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="name">Book Price</label>
+            <input type="text" name="price" id="price" value="0" class="price form-control">
         </div>
         
         <div class="form-group mb-3">

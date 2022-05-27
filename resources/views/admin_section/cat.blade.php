@@ -24,7 +24,9 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">All Course Category</h3>
-                <button  id="addcat" class="float-right   btn btn-primary">Add New Category</button>
+                <button  id="addcat" class="float-right   btn btn-primary">Add New Category</button><br>
+                <a id=""  href="{{url('admin_section/books')}}" style="text-decoration:none;" class="float-left   btn btn-info">Add New Book</a>
+
                 <div id="cat_success_message"></div>
               </div>
               <!-- /.card-header -->
@@ -44,8 +46,8 @@
                       <td>{{$loop->iteration}}</td>
                       <td>{{$cat->category}}</td>
                       <td>
-                          <span><button value="{{$cat->id}}" id="edit_cat" style="color:green; border:none"><i class="fa fa-edit"></i> </button></span>
-                          <span><button value="{{$cat->id}}" id="trash_cat" style="color:red; border:none"><i class="fa fa-trash"></i> </button></span>
+                          <span><button value="{{$cat->id}}" class="edit_cat" style="color:green; border:none"><i class="fa fa-edit"></i> </button></span>
+                          <span><button value="{{$cat->id}}" class="trash_cat" style="color:red; border:none"><i class="fa fa-trash"></i> </button></span>
 
                       </td>
                     </tr>

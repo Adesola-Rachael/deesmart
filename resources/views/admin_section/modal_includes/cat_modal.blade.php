@@ -89,7 +89,7 @@
 
 
 <!-- Edit department Modal -->
-<div class="modal fade" id="EditCourseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="EditCatModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -101,12 +101,18 @@
         
  
       </div>
-      <form id="edit_course">
+      <form id="edit_cat">
         <div class="modal-body">
           <!-- input title -->
-          <input type="hidden" id="edit_course_id">
+          <input type="hidden" id="edit_cat_id">
 
           <div class="form-group mb-3">
+            <label for="cat"> Edit Course Category</label>
+            <input type="text" name="edit_cat" id="edit_cat" class="edit_cat form-control">
+            <!-- <input type="text" name="course" id="course" class="course form-control"> -->
+        </div> 
+
+          <!-- <div class="form-group mb-3">
             <label for="course">Course Title</label>
             <input  name="course_title" type="text" id="course_title"  class="title form-control">
 
@@ -138,13 +144,13 @@
                 @foreach($cats as $cat)
                 <option value="{{$cat->id}}">{{$cat->category}}</option>
                 @endforeach
-            </select> 
+            </select>  -->
 
                     
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary update_course">Save Change</button>
+          <button type="button" class="btn btn-primary update_cat">Save Change</button>
         </div>
       </form>
     </div>
