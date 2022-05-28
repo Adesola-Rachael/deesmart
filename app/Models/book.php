@@ -16,6 +16,8 @@ class book extends Model
         'book_file',
         'book_cover',
         'price',
+        'cta_link_buy',
+        'cta_link_admin',
         'status',
         'share',
         'views',

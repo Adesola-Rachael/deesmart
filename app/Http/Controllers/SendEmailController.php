@@ -32,7 +32,8 @@ class SendEmailController extends Controller
             'title' => 'Mail from ItSolutionStuff.com',
             'body' => 'This is for testing email using smtp',
             'email'=>$request->email,
-            'phone'=>$request->phone
+            'phone'=>$request->phone,
+            'link'=>$request->link
             ];
  
       Mail::to('gtreasure162@gmail.com')->send(new download($download));

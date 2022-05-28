@@ -8,7 +8,7 @@
 <p>{{ $download['body'] }}</p>
 <p>{{ $download['email'] }}</p>
 <p>{{ $download['phone'] }}</p>
-<button style="background:blue;" ><a style="background:blue;" href="{{ $download['link'] }}">clcik Here To Download</a></button>
+<!-- <button style="background:blue;" ><a style="background:blue;color:#fff;" href="{{ $download['link'] }}">click Here To Download</a></button> -->
 
 <p>Thank you</p>
 </body>

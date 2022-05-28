@@ -26,7 +26,8 @@ return new class extends Migration
             $table->string('views')->nullable();
             $table->string('likes')->nullable();
             $table->string('download')->nullable();
-            $table->text('cta_link')->nullable();
+            $table->text('cta_link_buy')->nullable();
+            $table->text('cta_link_admin')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();

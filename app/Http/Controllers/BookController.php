@@ -28,7 +28,7 @@ class BookController extends Controller
         'book_title'=>'required|unique:books',
         'book_desc'=>'required',
         'book_cover'=>'required|mimes:jpg,png,jpeg,gif,svg|max:2048',
-        'book_file'=>'required|mimes:pdf,docx,doc',
+        // 'book_file'=>'required|mimes:pdf,docx,doc',
         'price'=>'required',
         // 'cta_link'=>'required',
         'cat'=>'required'
@@ -38,6 +38,8 @@ class BookController extends Controller
         $book->book_id= $randomString;
         $book->book_title=$request->book_title;
         $book->book_desc=$request->book_desc;
+        $book->cta_link_buy=$request->cta_link_buy;
+        $book->cta_link_admin=$request->cta_link_admin;
     
         $book->price=$request->price;
         // $book->cta_link=$request->cta_link;

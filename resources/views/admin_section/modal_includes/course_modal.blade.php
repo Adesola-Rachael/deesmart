@@ -39,12 +39,17 @@
             <label for="name">Book Price</label>
             <input type="text" name="price" id="price" value="0" class="price form-control">
         </div>
-        
         <div class="form-group mb-3">
-            <label for="diplay_date">Call to Action Link</label>
-            <input type="text" name="cta_link" id="cta_link" class="cta_link form-control">
-        </div>  
-        <label for="">course category</label>
+            <label for="name">CTA link To buy(Applicable To paid Books)</label>
+            <input type="text" name="cta_link_buy" id="cta_link_buy" value="" class="cta_link_buy form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="name">CTA link For Admin(Applicable To paid Books)</label>
+            <input type="text" name="cta_link_admin" id="cta_link_admin" value="" class="cta_link_admin form-control">
+        </div>
+        
+ 
+        <label for="">Course category</label>
             <select class="form-control select2 cat" id="cat" name="cat" style="width: 100%;">
                 <option selected="selected">Select Course Category</option>
                 @foreach($cats as $cat)
@@ -186,8 +191,13 @@
           </div> 
 
           <div class="form-group mb-3">
-            <label for="course">CTA Link</label>
-            <input  type="text" name="cta_link" id="cta_link"   class="cta form-control">
+            <label for="course">CTA link For Admin(Applicable To paid Books)</label>
+            <input  type="text" name="cta_link_buy" id="cta_link_buy"   class="cta_link_buy form-control">
+          </div> 
+
+          <div class="form-group mb-3">
+            <label for="course">CTA link For Admin(Applicable To paid Books)</label>
+            <input  type="text" name="cta_link_admin" id="cta_link_admin"   class="cta_link_admin form-control">
           </div> 
 
           <div class="form-group mb-3">

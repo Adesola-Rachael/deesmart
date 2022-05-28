@@ -34,9 +34,13 @@ require __DIR__.'/auth.php';
 Route::get('/index',[PagesController::class,'home'] );
 Route::get('/contact',[PagesController::class,'contact'] );
 Route::get('/about',[PagesController::class,'about'] );
-Route::get('courses',[PagesController::class,'course'] );
-Route::get('book',[PagesController::class,'books'] );
+// Route::get('courses',[PagesController::class,'course'] );
+Route::get('/book',[PagesController::class,'books'] );
 Route::get('book_details/{id}',[PagesController::class,'details'] );
+Route::get('skill_details/{id}',[PagesController::class,'skillDetails'] );
+Route::get('/high_income_skill',[PagesController::class,'skillbook'] );
+
+
 
 
 // Admin pages route
