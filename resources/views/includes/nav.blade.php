@@ -10,13 +10,13 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a class="active" href=" {{url('about')}} ">About</a></li>
-          <li><a href="{{url('courses')}} ">Courses</a></li>
+          <li><a href="{{url('book')}} ">Courses</a></li>
           <li><a href="{{url('contact')}} ">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="courses.html" class="get-started-btn">Get Started</a>
+      <a href="{{url('book')}}" class="get-started-btn">Get Started</a>
 
     </div>
   </header><!-- End Header -->

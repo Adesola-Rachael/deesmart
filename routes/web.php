@@ -3,8 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PagesController;
-// use App\Http\Controllers\CourseController;
-// use App\Http\Controllers\CourseCatController;
+
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\BookController;
@@ -49,13 +48,13 @@ Route::get('/cube/index',[AdminController::class,'adminHome'] );
 
 Route::get('/admin_section/index',[AdminController::class,'NewAdminHome'] );
 
-// course route
-Route::get('/admin_section/courses',[CourseController::class,'adminCourse'] );
-Route::get('/cube/course',[CourseController::class,'course'] );
-Route::post('/course',[CourseController::class, 'CreateCourse']);
-Route::get('/getCourseById/{id}',[CourseController::class, 'getcourseId']);
-Route::get('/delete-course/{id}',[CourseController::class, 'deletecourse']);
-Route::put('/updateCourse/{id}',[CourseController::class, 'updateCourse']);
+// // course route
+// Route::get('/admin_section/courses',[CourseController::class,'adminCourse'] );
+// Route::get('/cube/course',[CourseController::class,'course'] );
+// Route::post('/course',[CourseController::class, 'CreateCourse']);
+// Route::get('/getCourseById/{id}',[CourseController::class, 'getcourseId']);
+// Route::get('/delete-course/{id}',[CourseController::class, 'deletecourse']);
+// Route::put('/updateCourse/{id}',[CourseController::class, 'updateCourse']);
 
 
 
@@ -66,7 +65,7 @@ Route::get('/admin_section/cat',[CategoryController::class,'cat'] );
 Route::post('/cat',[CategoryController::class, 'Createcat']);
 Route::get('/getcatById/{id}',[CategoryController::class, 'getcatId']);
 Route::put('/delete-cat/{id}',[CategoryController::class, 'TrashCategory(']);
-Route::put('/updatecat{id}',[CourseCatController::class, 'updatecat']);
+// Route::put('/updatecat{id}',[CourseCatController::class, 'updatecat']);
 
 
 // book
