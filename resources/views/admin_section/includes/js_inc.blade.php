@@ -4,6 +4,7 @@
 <script src="../../admincon/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="../../admincon/dist/js/js_includes/course.js"></script>
 <script src="../../admincon/dist/js/js_includes/cat.js"></script>
+<script src="../../admincon/dist/js/js_includes/event.js"></script>
 
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>

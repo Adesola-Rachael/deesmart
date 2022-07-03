@@ -12,7 +12,7 @@
     
   
     
-  <section>
+<section>
 <div class="services-area2">
 <div class="container">
 <div class="row">
@@ -40,8 +40,8 @@
 </div> 
 <!-- <p>(120 Review)</p> -->
 </div>
-<button id="sendmail" class="white-btn mr-10"><i class="fa fa-download"> </i>Download</button>
-<button  href="#" class="border-btn share-btn"><i class="fas fa-share-alt"></i></button >
+<a href="{{ Storage::url($books->book_file)}}" class="white-btn mr-10" download><i class="fa fa-download"> </i>Download</a>
+<button  href="#" value="{{$books->id}}"  id="share" class="border-btn   share-btn"><i class="fas fa-share-alt"></i>Share</button>
 </div>
 </div>
 </div>
@@ -94,39 +94,89 @@
 
 
 <!-- Authors Modal -->
-<div class="modal fade" id="SendEmailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<!-- <button  id="share" class='btn btn-danger fa fa-trash' data-toggle='modal' data-target='#share' data-backdrop='static' data-keyboard='false'> -->
+
+@include('modal_includes.shareBook_modal')
+
+
+
+
+
+
+<div class="modal fade" id="S" data-backdrop='static' tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Your Information is save</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Edit Course</h5>
+        
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        
+ 
+      </div>
+      <form id="edit_cat">
+        <div class="modal-body">
+          <!-- input title -->
+          <input type="hidden" id="edit_cat_id">
+
+          <div class="form-group mb-3">
+            <label for="cat"> Edit Course Category</label>
+            <input type="text" name="edit_cat" id="edit_cat" class="edit_cat form-control">
+            <!-- <input type="text" name="course" id="course" class="course form-control"> -->
+        </div> 
+
+
+                    
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary update_cat">Save Change</button>
+        </div>
+      </form>
+    </div>
+    
+  </div>
+</div>
+<!-- </button> -->
+<!-- end edit auhtor -->
+
+
+
+
+
+<div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Share <h3>{{ucfirst($books->book_title)}}</h3></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> 
           <span aria-hidden="true">&times;</span>
         </button>
 
  
     
       </div>
-      <form id="downloadEmail">
+      
       <div class="modal-body">
         <!-- input title -->
         
-        
-        <div class="form-group mb-3">
-            <label for="email">Email</label>
-            <input type="email" name="email" placeholder="" id="email" class="email form-control">
-
-         </div>
-
-        <div class="form-group mb-3">
-            <label for="name">Phone Number</label>
-            <input type="text" name="phone" placeholder="e.g +2347012345678" id="phone" class="phone form-control">
-        </div> 
-    
-      </div>
-      <div class="modal-footer">
-         <button type="button" class="btn btn-primary SendEmail">Send</button>
-      </div>
-      </form>
+        <div class="share-btn-container">
+            <a href="#" class="facebook-btn">
+              <i class="fa icon-facebook"></i>
+            </a>
+            <a href="#" class="twitter-btn">
+              <i class="fa icon-twitter"></i>
+            </a>
+            <a href="#" class="linkedin-btn"> 
+              <i class="fa icon-linkedin"></i>
+            </a>
+            
+            <a href="#" class="whatsapp-btn">
+              <i class="fa icon-whatsapp"></i>
+            </a>
+        </div>
+      
     </div>
   </div>
 </div>

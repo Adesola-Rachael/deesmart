@@ -76,7 +76,7 @@
 
 <script src="{{asset('assets/js/jquery/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="{{asset('assets/js/jquery-ui/jquery-ui.min.js')}}"></script>
+<!-- <script src="{{asset('assets/js/jquery/jquery.min.js')}}"></script> -->
 
 <script>
 
@@ -128,9 +128,181 @@ $(document).on('click', '.SendEmail',function(){
   });
 });
 
-  
+// for book Sharing
+
+$(document).on('click', '#share',function(e){
+    e.preventDefault();
+    //  console.log('connected')
+    
+     $('#ShareBook').modal('show');
+
+     var book_id= $('#share').val();
+     console.log(book_id+"1")
+
+
+
+
+
+});
+
+
+
+$(document).on('click', '.SendEmail',function(){
+   var download=$("#downloadEmail").serialize();
+  console.log();
+   console.log(download);
+
+  $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $.ajax({
+    url:"/new-email",
+    type:"POST",
+    // data:cat,
+    success:function(response){
+      console.log(response);
+      $('#SendEmailModal').modal('hide');
+      if(response.status==200){
+        $('#download_success_message').html(
+        '<div class="alert alert-success alert-dismissible">'+
+        '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
+        '<h5><i class="icon fas fa-thumbs-up"></i>' +response.message+
+        '</h5></div>'
+        );
+        // window.location="book_book";
+      }else{
+        console.log(response.message);
+        var message=JSON.stringify(response.message)
+        $('#download_success_message').html(
+        '<div class="alert alert-danger alert-dismissible">'+
+        '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
+        '<h5><i class="icon fas fa-ban"></i>Error!</h5>' +message+
+        '</div>'
+        );
+      }
+     
+    }
+  });
+});
+
+
+// $(document).on('click', '#share',function(e){
+//     e.preventDefault();
+//      console.log('connected')
+    
+//      $('#ShareBook').modal('show');
+// });
+
+// $(document).on('click', '.SendEmail',function(){
+//    var download=$("#downloadEmail").serialize();
+//   console.log();
+//    console.log(download);
+
+//   $.ajaxSetup({
+//     headers: {
+//         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//     }
+//   });
+//   $.ajax({
+//     url:"/new-email",
+//     type:"POST",
+//     // data:cat,
+//     success:function(response){
+//       console.log(response);
+//       $('#SendEmailModal').modal('hide');
+//       if(response.status==200){
+//         $('#download_success_message').html(
+//         '<div class="alert alert-success alert-dismissible">'+
+//         '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
+//         '<h5><i class="icon fas fa-thumbs-up"></i>' +response.message+
+//         '</h5></div>'
+//         );
+//         // window.location="book_book";
+//       }else{
+//         console.log(response.message);
+//         var message=JSON.stringify(response.message)
+//         $('#download_success_message').html(
+//         '<div class="alert alert-danger alert-dismissible">'+
+//         '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
+//         '<h5><i class="icon fas fa-ban"></i>Error!</h5>' +message+
+//         '</div>'
+//         );
+//       }
+     
+//     }
+//   });
+//});
+
+
+
+
+
+
+
+
+
+
+
+
+// $(document).on('click','.share,function(e){
+//   e.preventDefault();
+//   console.log('clicked')
+//   const data=$('#contact_form').serialize();
+
+//   console.log(data);
+
+//   $.ajaxSetup({
+//     headers: {
+//         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//     }
+//   });
+//   $.ajax({
+//     url:"/contact_form",
+//     type:"POST",
+//      data:data,
+//     success:function(response){
+//       console.log(response);
+//       // $('#SendMessage').modal('hide');
+//       if(response.status==200){
+//         $('#SendSuccessMessage').html(
+//         '<div class="alert alert-success alert-dismissible">'+
+//         // '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
+//         '<h5><i class="icon fas fa-thumbs-up"></i>' +response.message+
+//         '</h5></div>'
+//         );
+//         // window.location="book_book";
+//       }else{
+//         console.log(response.message);
+//         var message=JSON.stringify(response.message)
+//         $('#SendSuccessMessage').html(
+//         '<div class="alert alert-danger alert-dismissible">'+
+//         // '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
+//         '<h5><i class="icon fas fa-ban"></i>Error!</h5>' +message+
+//         '</div>'
+//         );
+//       }
+     
+//     }
+//     });
+
+// });
+</script>
+
+<script type="text/javascript">
+// $(document).on('click','.share', function(){
+//   // e.preventDefault();
+//   $('#share').modal('show');
+//   // $('#share').modal('show'); 
+//   const share=$('#share').val();
+//   console.log(share);
+
+  // 
 
 </script>
+  
+
 
 
 <script src="{{asset('assets/vendor/purecounter/purecounter.js')}}"></script>

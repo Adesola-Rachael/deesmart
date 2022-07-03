@@ -7,6 +7,10 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\EventController;
+
+use App\Mail\ContactEmail;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,8 +40,17 @@ Route::get('/about',[PagesController::class,'about'] );
 // Route::get('courses',[PagesController::class,'course'] );
 Route::get('/book',[PagesController::class,'books'] );
 Route::get('book_details/{id}',[PagesController::class,'details'] );
+Route::get('details/{id}',[PagesController::class,'details'] );
+
+
+Route::get('/event',[PagesController::class,'getEvent'] ); 
+
 Route::get('skill_details/{id}',[PagesController::class,'skillDetails'] );
-Route::get('/high_income_skill',[PagesController::class,'skillbook'] );
+// Route::get('/high_income_skill',[PagesController::class,'skillbook'] );
+
+
+// contact_formcontact_form
+Route::post('/contact_form',[ContactController::class,'sendContact'] );
 
 
 
@@ -76,6 +89,12 @@ Route::get('/getBookById/{id}',[BookController::class, 'getbookId']);
 // Route::get('/delete-course/{id}',[CourseController::class, 'deletecourse']);
 // Route::put('/updateCourse/{id}',[CourseController::class, 'updateCourse']);
 
+// event
+Route::get('/admin_section/manage_event',[EventController::class,'getManageEvent'] );
+ Route::post('/event',[EventController::class, 'createEvent']);
+// Route::get('/getcatById/{id}',[CategoryController::class, 'getcatId']);
+// Route::put('/delete-cat/{id}',[CategoryController::class, 'TrashCategory(']);
+// Route::put('/updatecat{id}',[CourseCatController::class, 'updatecat']);
 
 
 // Email
@@ -83,6 +102,18 @@ Route::get('/getBookById/{id}',[BookController::class, 'getbookId']);
 Route::get('send-email', [SendEmailController::class, 'index']);
 
 Route::post('new-email', [SendEmailController::class, 'downloadEmail']);
+
+
+Route::get('senda-email', function(){
+    $mail = [
+        "name" => "Test NAME",
+        "dob" => "12/12/1990"
+    ];
+
+    Mail::to("gtreasure162@gmail.com")->send(new ContactEmail($mail));
+
+    dd("Mail Sent Successfully!");
+});
 
 // Route::get('new-email', function () {
 // $download = [
@@ -93,3 +124,12 @@ Route::post('new-email', [SendEmailController::class, 'downloadEmail']);
 // dd("Email is Sent.");
 // });
 
+
+// MAIL_MAILER=smtp
+// MAIL_HOST=smtp.gmail.com
+// MAIL_PORT=587
+// MAIL_USERNAME="vic650283@gmail.com"
+// MAIL_PASSWORD="08163590610"
+// MAIL_ENCRYPTION=tls
+// # MAIL_FROM_ADDRESS="hello@example.com"
+// # MAIL_FROM_NAME="${APP_NAME}"

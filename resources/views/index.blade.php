@@ -157,34 +157,40 @@
 <div class="row">
 <div class="col-xl-12">
 <div class="selling-active">
-@foreach($books as $book)
-<div class="properties pb-20">
-<div class="properties-card">
-<div class="properties-img">
-<a href="{{url ('book_details/'.$book->id) }}"><img src="{{ Storage::url($book->book_cover) }}" alt="" style="height:250px; "></a>
-</div>
-<div class="properties-caption">
-<h3><a href="{{url ('book_details/'.$book->id) }}">{{ucfirst($book->book_title)}}</a></h3>
-<p class="cat">{{ucfirst($book->category->category ?? 'None' )}}</p>
-<div class="properties-footer d-flex justify-content-between align-items-center">
-<div class="review">
-<div class="rating">
-<!-- <i class="fas fssssssssssa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star-half-alt"></i> -->
-</div>
-<!-- <p>(<span>120</span> Review)</p> -->
-</div>
-<div class="price">
-<span>₦{{$book->price}}</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-@endforeach
+@if($books->isNotEmpty())
+
+  @foreach($books as $book)
+  <div class="properties pb-20">
+  <div class="properties-card">
+  <div class="properties-img">
+  <a href="{{url ('book_details/'.$book->id) }}"><img src="{{ Storage::url($book->book_cover) }}" alt="" style="height:250px; "></a>
+  </div>
+  <div class="properties-caption">
+  <h3><a href="{{url ('details/'.$book->id) }}">{{ucfirst($book->book_title)}}</a></h3>
+  <p class="cat">{{ucfirst($book->category->category ?? 'None' )}}</p>
+  <div class="properties-footer d-flex justify-content-between align-items-center">
+  <div class="review">
+  <div class="rating">
+  <!-- <i class="fas fssssssssssa-star"></i>
+  <i class="fas fa-star"></i>
+  <i class="fas fa-star"></i>
+  <i class="fas fa-star"></i>
+  <i class="fas fa-star-half-alt"></i> -->
+  </div>
+  <!-- <p>(<span>120</span> Review)</p> -->
+  </div>
+  <div class="price">
+  <span>₦{{$book->price}}</span>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  @endforeach
+  @else
+  @include('includes.book_not_found')
+  
+  @endif
 
 
 
@@ -377,47 +383,58 @@
 </div>
 </div>
 <div class="row">
-<div class="col-xl-12 "style="background:s;">
-<div class="services-active" style="background:">
+    @if($skills->isNotEmpty())
+   
+  <div class="col-xl-12 "style="background:s;">
+  <div class="services-active" style="background:">
+ @foreach($skills as $skill) 
 
-@foreach($skills as $skill) 
-<div class="single-services d-flex align-items-center " style="background:#5fcf80;">
-<div class="features-img">
-<img src="{{ Storage::url($skill->book_cover) }}" alt=""  style="width:250px; height:350px;">
-</div>
-<div class="features-caption">
-<img src="book_assets/img/icon/logo.html" alt="">
-<h3>{{ucfirst($skill->book_title)}}</h3>
-<p style="background:">{{ucfirst($skill->category->category ?? 'None' )}}</p>
-<div class="price">
-<span>₦{{$skill->price}}</span>
-</div>
-<div class="review">
-<div class="rating">
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star-half-alt"></i>
-</div>
-<!-- <p>(120 Review)</p> -->
-</div>
-<a href="{{url ('skill_details/'.$skill->id) }}" class="border-btn">View Details</a>
-</div>
-</div>
+
+    
+    <div class="single-services d-flex align-items-center " style="background:#5fcf80;">
+      <div class="features-img">
+        <img src="{{ Storage::url($skill->book_cover) }}" alt=""  style="width:250px; height:350px;">
+      </div>
+      <div class="features-caption">
+        <img src="book_assets/img/icon/logo.html" alt="">
+        <h3>{{ucfirst($skill->book_title)}}</h3>
+        <p style="background:">{{ucfirst($skill->category->category ?? 'None' )}}</p>
+        <div class="price">
+        <span>₦{{$skill->price}}</span>
+        </div>
+        <div class="review">
+          <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+          </div>
+          <!-- <p>(120 Review)</p> -->
+        </div>
+        <a href="{{url ('details/'.$skill->id) }}" class="border-btn">View Details</a>
+      </div>
+    </div>
 @endforeach
-<div class="single-services d-flex align-items-center">
-<div class="features-img">
+
+  </div>
+  </div>
+  
+  @else
+  @include('includes.book_not_found')
+  @endif
+<!-- <div class="single-services d-flex align-items-center"> -->
+<!-- <div class="features-img">
 <img src="book_assets/img/gallery/best-books1.jpg" alt="">
-</div>
-<div class="features-caption">
+</div> -->
+<!-- <div class="features-caption">
 <img src="book_assets/img/icon/logo.html" alt="">
 <h3>The Rage of Dragons</h3>
 <p>By Evan Winter</p>
 <div class="price">
 <span>$50.00</span>
-</div>
-<div class="review">
+</div> -->
+<!-- <div class="review">
 <div class="rating">
 <i class="fas fa-star"></i>
 <i class="fas fa-star"></i>
@@ -426,14 +443,14 @@
 <i class="fas fa-star-half-alt"></i>
 </div>
 <p>(120 Review)</p>
-</div>
-<a href="book-details.html" class="border-btn">View Details</a>
-</div>
-</div>
-</div>
-</div>
+</div> -->
+<!-- <a href="book-details.html" class="border-btn">View Details</a> -->
+
+<!-- </div> -->
 </div>
 </div>
+<!-- </div> -->
+
 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-9">
 
 <div class="google-add">
@@ -476,33 +493,39 @@
 <div class="tab-content" id="nav-tabContent">
 <div class="tab-pane fade show active" id="nav-one" role="tabpanel" aria-labelledby="nav-one-tab">
  <div class="row">
-@foreach($books->take(6) as $book)
-<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-<div class="properties pb-30">
-<div class="properties-card">
-<div class="properties-img">
-<a href="{{url ('book_details/'.$book->id) }}"><img src="{{ Storage::url($book->book_cover) }}" alt="" style="width:130px; height:250px;"> </a>
-</div>
-<div class="properties-caption properties-caption2">
-<h3><a href="{{url ('book_details/'.$book->id) }}">{{ucfirst($book->book_title)}}</a></h3>
-<p class="cat">{{ucfirst($book->category->category ?? 'None' )}}</p>
+ @if($books->isNotEmpty())
 
-<div class="properties-footer d-flex justify-content-between align-items-center">
-<div class="review">
-<div class="rating">
-</div>
-<!-- <p>(<span>120</span> Review)</p> -->
-</div>
-<div class="price">
-<span>₦{{$book->price}}</span>
+  @foreach($books->take(6) as $book)
+  <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+  <div class="properties pb-30">
+  <div class="properties-card">
+  <div class="properties-img">
+  <a href="{{url ('book_details/'.$book->id) }}"><img src="{{ Storage::url($book->book_cover) }}" alt="" style="width:130px; height:250px;"> </a>
+  </div>
+  <div class="properties-caption properties-caption2">
+  <h3><a href="{{url ('book_details/'.$book->id) }}">{{ucfirst($book->book_title)}}</a></h3>
+  <p class="cat">{{ucfirst($book->category->category ?? 'None' )}}</p>
 
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-@endforeach
+  <div class="properties-footer d-flex justify-content-between align-items-center">
+  <div class="review">
+  <div class="rating">
+  </div>
+  <!-- <p>(<span>120</span> Review)</p> -->
+  </div>
+  <div class="price">
+  <span>₦{{$book->price}}</span>
+
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  @endforeach
+  @else
+  @include('includes.book_not_found')
+  
+  @endif
 </div>
 
 

@@ -7,7 +7,7 @@
 @section('title',$skill_title)
 @section('title_details', $skill_title_details)
 @else
-section('title',$title)
+@section('title',$title)
 @section('title_details', $title_details)
 @endif
 
@@ -47,10 +47,13 @@ section('title',$title)
 </div> 
 <!-- <p>(120 Review)</p> -->
 </div>
-<a href="{{$books->cta_link_buy}}" class="white-btn mr-10"><i class="fa fa-download"> </i>Know More</button>
-<a href="{{$books->cta_link_admin}}" class="white-btn mr-10"><i class="fa fa-download"> </i>Talk To Admin</button>
 
-<button  href="#" class="border-btn share-btn"><i class="fas fa-share-alt"></i></button >
+<a href="{{$books->cta_link_buy}}" class="white-btn mr-10"> Know More</a>
+<!-- <a href="{{$books->cta_link_admin}}" class="white-btn mr-10">Talk To Admin</a> -->
+
+
+
+<a  href="#" class="border-btn share-btn"><i class="fas fa-share-alt"></i></a >
 </div>
 </div>
 </div>
@@ -175,6 +178,7 @@ section('title',$title)
 
 
 </main>
+
 @endif
 
 

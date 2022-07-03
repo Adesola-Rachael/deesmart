@@ -28,7 +28,7 @@ class BookController extends Controller
         'book_title'=>'required|unique:books',
         'book_desc'=>'required',
         'book_cover'=>'required|mimes:jpg,png,jpeg,gif,svg|max:2048',
-        // 'book_file'=>'required|mimes:pdf,docx,doc',
+        //  'book_file'=>'required|mimes:pdf,docx,doc',
         'price'=>'required',
         // 'cta_link'=>'required',
         'cat'=>'required'
@@ -45,11 +45,64 @@ class BookController extends Controller
         // $book->cta_link=$request->cta_link;
         $book->category_id=$request->cat;
 
-        $path_cover = $request->file('book_cover')->store('public/upload/book_cover');
-        $book->book_cover =  $path_cover;
+        $file = $request->file('book_cover');
+ 
+        $name = $file->getClientOriginalName();
+       // $extension = $file->getClientOriginalExtension();
+        //$path = $request->file('book_cover')->store('book_cover');
+         $path_file = $file->store('public/upload/book_cover/'.$name);
 
-        $path_file = $request->file('book_file')->store('public/upload/book_file');
-        $book->book_file= $path_file ;
+
+        // db
+        $book->book_cover =  $path_file;
+
+
+        // //////////////////////////
+        $file = $request->file('book_file');
+ 
+        $name = $file->getClientOriginalName();
+       // $extension = $file->getClientOriginalExtension();
+        //$path = $request->file('book_cover')->store('book_cover');
+         $path_file = $file->store('public/upload/book_file/'.$name);
+
+
+        // db
+        $book->book_file =  $path_file;
+
+
+
+
+
+
+
+
+//         // $book['uuid'] = (string)Uuid::generate();
+//             if ($request->hasFile('book_cover')) {
+//                 // $path = $request->file('avatar')->store('avatars');
+//                 // $file = $request->file('avatar');
+ 
+// // $name = $file->getClientOriginalName();
+// // $extension = $file->getClientOriginalExtension();
+//                 $book['book_cover'] = $request->book_cover->getClientOriginalName();
+//                 $request->book_cover->store('public/upload/book_cover' );
+//             }
+
+//             // $path = $request->file('avatar')->store('avatars');
+//             $book->book_cover = $book['book_cover'];
+
+//             //if ($request->hasFile('book_file')) {
+//                 $name_cover = $request->book_file->getClientOriginalName();
+
+//                 $request->book_file->store('public/upload/book_file');
+//             // }
+//             $book->book_file = $book['book_file'];
+
+
+        // $path_cover = $request->file('book_cover')->store('public/upload/book_cover');
+        // $book->book_cover =  $path_cover;
+
+        // $path_file = $request->file('book_file')->store('public/upload/book_file');
+        // $book->book_file= $path_file ;
     
         if ($validatebook->fails()) {
             return Response::json(['success' => false, 'message' => $validatebook->errors(),'status'=> 400, 'data' =>$book]);

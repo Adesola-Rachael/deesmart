@@ -90,7 +90,35 @@
 
 
 <div class="col-xl-8 col-lg-8 col-md-6">
+@if($books->isNotEmpty())
+
 <div class="row justify-content-end">
+  <div class="col-xl-4">
+    <div class="product_page_tittle">
+      <div class="short_by">
+        <form id=>
+          <input type="search" name="search" class="search" placeholder="search"><input class="" type="submit" name="submit" style="background:green;"/>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-4">
+    <div class="product_page_tittle">
+      <div class="short_by">
+        <select name="#" id="product_short_list">
+        <option>Browse by popularity</option>
+        <option>Name</option>
+        <option>NEW</option>
+        <option>Old</option>
+        <option>Price</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="row justify-content-end">
 <div class="col-xl-4">
 <div class="product_page_tittle">
 <div class="short_by">
@@ -104,7 +132,9 @@
 </div>
 </div>
 </div>
-</div>
+</div> -->
+
+
 <div class="best-selling p-0">
 <div class="row">
 
@@ -459,7 +489,13 @@
 </div>
 </div>
 </div>
+@else
+  @include('includes.book_not_found')
+@endif
 </div>
+
+
+
 
 
 <div class="col-xl-4 col-lg-4 col-md-6">
