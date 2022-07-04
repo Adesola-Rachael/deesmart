@@ -70,6 +70,10 @@
   -->
   @extends('layouts.pageCon')
   @section('page_title',$page_title)
+
+  @section('event_empty',$event_empty)
+@section('event_empty_detail', $event_empty_detail)
+
 @section('content')
 
 

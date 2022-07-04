@@ -69,6 +69,10 @@
 </div>
   -->
 @extends('layouts.pageCon')
+
+@section('event_empty',$event_empty)
+@section('event_empty_detail', $event_empty_detail)
+
 @section('page_title',$page_title)
 @section('title',$title)
 @section('title_details', $title_details)

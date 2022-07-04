@@ -17,17 +17,34 @@
                 @foreach($events as $event)
                
                 <?php
-					$date=date("Y-m-d",strtotime($event->date));
+					$date=date("Y-m-d- h:i a",strtotime($event->date));
+                    
 					 $now=date("Y-m-d");
 					//  $fivedays=date("Y-m-d",strtotime($now.'+5 days'));
 					$day_name= date('l', strtotime($event->date));
                     // $time=date(STR($event->date), ' ',2);
+                    // preg_split('/[|!|?]/', $str);
 					  
 					$temp = explode('-',$date);
+                    $temp2 = explode(' ',$date);
+
 					$day=$temp[2];
 					$month=date("F", mktime(0, 0, 0,$temp[1] , 1));
 					$year=$temp[0];
-                    $year=$temp[0];
+                    $hr=$temp2[1];
+                    $mer=$temp2[2];
+
+                    // explode colon for time
+                    $tempTime = explode(':',$hr);
+                    $hrs=$tempTime[0];
+                    $min=$tempTime[1];
+
+
+
+
+
+
+                    // $year=$temp[0];
 				?>
 
               
@@ -46,10 +63,10 @@
 							    
                     </div>
                     <div class="card-footer">
-                    <small class="text-muted">Date: {{$day_name}}, {{$day}}, {{$month}}  {{$year}}</small><br>
+                    <small class="text-muted">Date:  {{$day_name}}, {{$day}}, {{$month}} {{$year}}</small><br>
 
-                        <small class="text-muted">Time: {{$event->date}}{{$event->month}}, {{$event->Day}}</small>
-                        <small class="text-muted">$time</small>
+                        <!-- <small class="text-muted">Time: {{$event->date}}{{$event->month}}, {{$event->Day}}</small> -->
+                        <small class="text-muted"> Time:{{$hrs}}:{{$min}} {{$mer}} </small>
                         <p><small class="float-right">
  
                             <span style="margin:4px;"><button  style="border:0px; color:green; font-size:15px; " id="viewCourse"  value="{{$event->id}}"><i class="fa fa-eye"></i></button></span>

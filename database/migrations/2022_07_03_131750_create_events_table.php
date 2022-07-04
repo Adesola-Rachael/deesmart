@@ -20,7 +20,7 @@ return new class extends Migration
             
             $table->string('title');
             $table->string('date');
-            $table->string('desc');
+            $table->text('desc');
             $table->timestamps();
         });
     }
