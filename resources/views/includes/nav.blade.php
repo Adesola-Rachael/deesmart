@@ -8,11 +8,13 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
+       
           <li><a href="{{url('index')}} ">Home</a></li>
           <li><a class="active" href=" {{url('about')}} ">About</a></li>
           <li><a href="{{url('book')}} ">Courses</a></li>
-          <li><a href="{{url('event')}} ">Events</a></li>
-          <li><a href="{{url('contact')}} ">Contact</a></li>
+          <li><a href="{{url('event')}} ">Events</a></li> 
+
+          <li><a href="{{url('contact')}} ">Contact</a></li> 
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

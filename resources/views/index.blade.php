@@ -1,73 +1,5 @@
 
-<!-- <!doctype html>
-<html class="no-js" lang="zxx"> -->
 
-<!-- Mirrored from preview.colorlib.com/theme/abcbook/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 03 Apr 2022 04:12:14 GMT -->
-<!-- <head><script nonce="b06277aa-b000-428c-aa6c-068f0cf06139">(function(w,d){!function(a,e,t,r){a.zarazData=a.zarazData||{},a.zarazData.executed=[],a.zarazData.tracks=[],a.zaraz={deferred:[]},a.zaraz.track=(e,t)=>{for(key in a.zarazData.tracks.push(e),t)a.zarazData["z_"+key]=t[key]},a.zaraz._preSet=[],a.zaraz.set=(e,t,r)=>{a.zarazData["z_"+e]=t,a.zaraz._preSet.push([e,t,r])},a.addEventListener("DOMContentLoaded",(()=>{var t=e.getElementsByTagName(r)[0],z=e.createElement(r),n=e.getElementsByTagName("title")[0];n&&(a.zarazData.t=e.getElementsByTagName("title")[0].text),a.zarazData.w=a.screen.width,a.zarazData.h=a.screen.height,a.zarazData.j=a.innerHeight,a.zarazData.e=a.innerWidth,a.zarazData.l=a.location.href,a.zarazData.r=e.referrer,a.zarazData.k=a.screen.colorDepth,a.zarazData.n=e.characterSet,a.zarazData.o=(new Date).getTimezoneOffset(),z.defer=!0,z.src="../../cdn-cgi/zaraz/sd0d9.js?z="+btoa(encodeURIComponent(JSON.stringify(a.zarazData))),t.parentNode.insertBefore(z,t)}))}(w,d,0,"script");})(window,document);</script>
-<meta charset="utf-8">
-<meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>asfaaua|ebookstore</title>
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" type="image/x-icon" href="book_assets/img/icon/favicon.png">
-
- <link rel="stylesheet" href="book_assets/css/main.css">
-<link rel="stylesheet" href="book_assets/css/style.css">
-</head><body>
-<main>
-<div class="slider-area">
-<div class="container-fluid">
-<div class="row">
-<div class="col-xl-12">
-<div class="slider-active dot-style">
-
-<div class="single-slider slider-height slider-bg1 d-flex align-items-center">
-<div class="container">
-<div class="row justify-content-center">
-<div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-7">
-<div class="hero-caption text-center">
-<span data-animation="fadeInUp" data-delay=".2s">Science Fiction</span>
-<h1 data-animation="fadeInUp" data-delay=".4s">The History<br> of Phipino</h1>
-<a href="#" class="btn hero-btn" data-animation="bounceIn" data-delay=".8s">Browse Store</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="single-slider slider-height slider-bg2 d-flex align-items-center">
-<div class="container">
-<div class="row justify-content-center">
-<div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-7">
-<div class="hero-caption text-center">
-<span data-animation="fadeInUp" data-delay=".2s">Science Fiction</span>
-<h1 data-animation="fadeInUp" data-delay=".4s">The History<br> of Phipino</h1>
-<a href="#" class="btn hero-btn" data-animation="bounceIn" data-delay=".8s">Browse Store</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="single-slider slider-height slider-bg3 d-flex align-items-center">
-<div class="container">
-<div class="row justify-content-center">
-<div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-7">
-<div class="hero-caption text-center">
-<span data-animation="fadeInUp" data-delay=".2s">Science Fiction</span>
-<h1 data-animation="fadeInUp" data-delay=".4s">The History<br> of Phipino</h1>
-<a href="#" class="btn hero-btn" data-animation="bounceIn" data-delay=".8s">Browse Store</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-  -->
   @extends('layouts.pageCon')
   @section('page_title',$page_title)
 
@@ -167,7 +99,7 @@
   <div class="properties pb-20">
   <div class="properties-card">
   <div class="properties-img">
-  <a href="{{url ('book_details/'.$book->id) }}"><img src="{{ Storage::url($book->book_cover) }}" alt="" style="height:250px; "></a>
+  <a href="{{url ('details/'.$book->id) }}"><img src="{{ Storage::url($book->book_cover) }}" alt="" style="height:250px; "></a>
   </div>
   <div class="properties-caption">
   <h3><a href="{{url ('details/'.$book->id) }}">{{ucfirst($book->book_title)}}</a></h3>
@@ -197,175 +129,6 @@
   @endif
 
 
-
-<!-- 
-
-
-
-
-
-
-<div class="properties pb-20">
-<div class="properties-card">
-<div class="properties-img">
-<a href="book-details.html"><img src="" alt=""></a>
-</div>
-<div class="properties-caption">
-<h3><a href="book-details.html">Moon Dance</a></h3>
-<p>J. R Rain</p>
-<div class="properties-footer d-flex justify-content-between align-items-center">
-<div class="review">
-<div class="rating">
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star-half-alt"></i>
-</div>
-<p>(<span>120</span> Review)</p>
-</div>
-<div class="price">
-<span>$50</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="properties pb-20">
-<div class="properties-card">
-<div class="properties-img">
-<a href="book-details.html"><img src="book_assets/img/gallery/best_selling3.jpg" alt=""></a>
-</div>
-<div class="properties-caption">
-<h3><a href="book-details.html">Moon Dance</a></h3>
-<p>J. R Rain</p>
-<div class="properties-footer d-flex justify-content-between align-items-center">
-<div class="review">
-<div class="rating">
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star-half-alt"></i>
-</div>
-<p>(<span>120</span> Review)</p>
-</div>
-<div class="price">
-<span>$50</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="properties pb-20">
-<div class="properties-card">
-<div class="properties-img">
-<a href="book-details.html"><img src="book_assets/img/gallery/best_selling4.jpg" alt=""></a>
-</div>
-<div class="properties-caption">
-<h3><a href="book-details.html">Moon Dance</a></h3>
-<p>J. R Rain</p>
-<div class="properties-footer d-flex justify-content-between align-items-center">
-<div class="review">
-<div class="rating">
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star-half-alt"></i>
-</div>
-<p>(<span>120</span> Review)</p>
-</div>
-<div class="price">
-<span>$50</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="properties pb-20">
-<div class="properties-card">
-<div class="properties-img">
-<a href="book-details.html"><img src="book_assets/img/gallery/best_selling5.jpg" alt=""></a>
-</div>
-<div class="properties-caption">
-<h3><a href="book-details.html">Moon Dance</a></h3>
-<p>J. R Rain</p>
-<div class="properties-footer d-flex justify-content-between align-items-center">
-<div class="review">
-<div class="rating">
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star-half-alt"></i>
-</div>
-<p>(<span>120</span> Review)</p>
-</div>
-<div class="price">
-<span>$50</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="properties pb-20">
-<div class="properties-card">
-<div class="properties-img">
-<a href="book-details.html"><img src="book_assets/img/gallery/best_selling6.jpg" alt=""></a>
-</div>
-<div class="properties-caption">
-<h3><a href="book-details.html">Moon Dance</a></h3>
-<p>J. R Rain</p>
-<div class="properties-footer d-flex justify-content-between align-items-center">
-<div class="review">
-<div class="rating">
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star-half-alt"></i>
-</div>
-<p>(<span>120</span> Review)</p>
-</div>
-<div class="price">
-<span>$50</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="properties pb-20">
-<div class="properties-card">
-<div class="properties-img">
-<a href="book-details.html"><img src="book_assets/img/gallery/best_selling4.jpg" alt=""></a>
-</div>
-<div class="properties-caption">
-<h3><a href="book-details.html">Moon Dance</a></h3>
-<p>J. R Rain</p>
-<div class="properties-footer d-flex justify-content-between align-items-center">
-<div class="review">
-<div class="rating">
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star-half-alt"></i>
-</div>
-<p>(<span>120</span> Review)</p>
-</div>
-<div class="price">
-<span>$50</span>
-</div>
-</div>
-</div> 
-</div>
-</div>-->
 </div>
 </div>
 </div>
@@ -382,7 +145,7 @@
 <div class="col-xl-12">
 <div class="section-tittle d-flex justify-content-between align-items-center mb-40">
 <h2 class="mb-0">High Income Skills</h2>
-<a href="" class="browse-btn">View All</a>
+<a href="{{url('book')}}" class="browse-btn">View All</a>
 </div>
 </div>
 </div>
@@ -458,7 +221,14 @@
 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-9">
 
 <div class="google-add">
-<img src="book_assets/img/gallery/ad.jpg" alt="" class="w-100">
+  @if($adverts)
+  @foreach($adverts as $advert)
+
+<a href=""><img src="{{ Storage::url($advert->image) }}" alt="" class="w-100" style="margin-bottom:5px;"></a>
+@endforeach
+@else
+<h2></h3>
+@endif
 </div>
 </div>
 </div>
@@ -480,11 +250,19 @@
 
 <nav>
 <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
 <a class="nav-link active" id="nav-one-tab" data-bs-toggle="tab" href="#nav-one" role="tab" aria-controls="nav-one" aria-selected="true">All</a>
-<a class="nav-link" id="nav-two-tab" data-bs-toggle="tab" href="#nav-two" role="tab" aria-controls="nav-two" aria-selected="false">Horror</a>
+      @foreach($cat as $caty) 
+<a class="nav-link" id="nav-two-tab"  href=" # " role="tab" aria-controls="nav-two" aria-selected="false">{{$caty->category }}</a>
+
+
+@endforeach
+
+<!-- <a class="nav-link active" id="nav-one-tab" data-bs-toggle="tab" href="#nav-one" role="tab" aria-controls="nav-one" aria-selected="true">All</a>
 <a class="nav-link" id="nav-three-tab" data-bs-toggle="tab" href="#nav-three" role="tab" aria-controls="nav-three" aria-selected="false">Thriller</a>
 <a class="nav-link" id="nav-four-tab" data-bs-toggle="tab" href="#nav-four" role="tab" aria-controls="nav-four" aria-selected="false">Science Fiction</a>
-<a class="nav-link" id="nav-five-tab" data-bs-toggle="tab" href="#nav-five" role="tab" aria-controls="nav-five" aria-selected="false">History</a>
+<a class="nav-link" id="nav-five-tab" data-bs-toggle="tab" href="#nav-five" role="tab" aria-controls="nav-five" aria-selected="false">History</a> -->
+
 </div>
 </nav>
 
@@ -504,10 +282,10 @@
   <div class="properties pb-30">
   <div class="properties-card">
   <div class="properties-img">
-  <a href="{{url ('book_details/'.$book->id) }}"><img src="{{ Storage::url($book->book_cover) }}" alt="" style="width:130px; height:250px;"> </a>
+  <a href="{{url ('details/'.$book->id) }}"><img src="{{ Storage::url($book->book_cover) }}" alt="" style="width:130px; height:250px;"> </a>
   </div>
   <div class="properties-caption properties-caption2">
-  <h3><a href="{{url ('book_details/'.$book->id) }}">{{ucfirst($book->book_title)}}</a></h3>
+  <h3><a href="{{url ('details/'.$book->id) }}">{{ucfirst($book->book_title)}}</a></h3>
   <p class="cat">{{ucfirst($book->category->category ?? 'None' )}}</p>
 
   <div class="properties-footer d-flex justify-content-between align-items-center">
@@ -1374,7 +1152,7 @@
 <div class="row">
 <div class="col-xl-12">
 <div class="more-btn text-center mt-15">
-<a href="#" class="border-btn border-btn2 more-btn2">Browse More</a>
+<a href="{{url('book')}}" class="border-btn border-btn2 more-btn2">Browse More</a>
 </div>
 </div>
 </div>
@@ -1383,22 +1161,40 @@
 
 
 <section class="container">
+<h2 style="">Event</h2>
 <div class="row align-items-center justify-content-between">
+  @if($books->isNotEmpty())
+  @foreach($events->take( 2) as $event)
+ 
 <div class="col-xl-6 col-lg-6">
-<div class="wantToWork-area w-padding2 mb-30" data-background="book_assets/img/gallery/best_selling6.jpg">
-<h2>The History<br> of Phipino</h2>
-<div class="linking">
-<a href="#" class="btn wantToWork-btn">View Details</a>
+<!-- <div class="wantToWork-area w-padding2 mb-30" data-background="{{ Storage::url($event->image) }}"  style="background:{{ Storage::url($event->image) }}> -->
+<div style="margin: 3%; position: relative;" > <img src="{{ Storage::url($event->image) }}"  style="width:100%; height:300px;" />
+<!-- <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"> -->
+  <!-- <div style=> -->
+  <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color:#fff; font-weight:bold;font-size:25px;">{{$event->title}}</div>
+  <div class="linking">
+  <a href="{{url ('event') }}" class="btn wantToWork-btn" style="position: absolute; top: 90%; left: 50%; transform: translate(-50%, -50%);">View Details</a>
+  </div>
 </div>
+
 </div>
-</div>
-<div class="col-xl-6 col-lg-6">
-<div class="wantToWork-area w-padding2 mb-30" data-background="book_assets/img/gallery/best_selling6.jpg">
+@endforeach
+@else
+@include('includes.book_not_found')
+
+@endif
+
+<!-- <div class="col-xl-6 col-lg-6">
+<div class="wantToWork-area w-padding2 mb-30" style="background">
+  <img src="book_assets/img/gallery/best_selling6.jpg">
 <h2>Wilma Mumduya</h2>
 <div class="linking">
 <a href="#" class="btn wantToWork-btn">View Details</a>
 </div>
-</div>
+</div> -->
+
+
+
 </div>
 </div>
 </section>

@@ -86,7 +86,7 @@
         </div>
     </section>
     <!-- /.content -->
-    <!-- @include('admin_section.modal_includes.event_modal') -->
+    @include('admin_section.modal_includes.event_modal')
   @endsection
 
 

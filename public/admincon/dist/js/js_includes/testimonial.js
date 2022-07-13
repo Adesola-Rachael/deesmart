@@ -1,14 +1,14 @@
 // create new main_cat
-$(document).on('click', '#addevent',function(e){
+$(document).on('click', '#addtestimonial',function(e){
     e.preventDefault();
     // console.log('connected')
     
-     $('#AddEventModal').modal('show');
+     $('#AddTestimonialModal').modal('show');
 });
 
-$(document).on('click', '.AddNewevent',function(){
-  var event=new FormData($("#event")[0]);
-  console.log(event);
+$(document).on('click', '.AddNewTestimonial',function(){
+  var testimonial=new FormData($("#testimonial")[0]);
+  console.log(testimonial);
 //   console.log("clicked");
 
   $.ajaxSetup({
@@ -17,17 +17,17 @@ $(document).on('click', '.AddNewevent',function(){
     }
   });
   $.ajax({
-    url:"/event",
+    url:"/testimonial",
     type:"POST",
-    data:event,
+    data:testimonial,
     dataType:"json",
     contentType: false, 
     processData: false, 
     success:function(response){
       console.log(response);
-      $('#AddEventModal').modal('hide');
+      $('#AddTestimonialModal').modal('hide');
       if(response.status==200){
-        $('#Event_success_message').html(
+        $('#Testimonial_success_message').html(
         '<div class="alert alert-success alert-dismissible">'+
         '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
         '<h5><i class="icon fas fa-thumbs-up"></i>' +response.message+
@@ -37,7 +37,7 @@ $(document).on('click', '.AddNewevent',function(){
       }else{
         console.log(response.message);
         var message=JSON.stringify(response.message)
-        $('#AddEventModal').html(
+        $('#Testimonial_success_message').html(
         '<div class="alert alert-danger alert-dismissible">'+
         '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
         '<h5><i class="icon fas fa-ban"></i>Error!</h5>' +message+

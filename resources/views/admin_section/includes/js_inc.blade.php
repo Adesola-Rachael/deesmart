@@ -2,9 +2,16 @@
 <script src="../../admincon/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="../../admincon/plugins/jquery-ui/jquery-ui.min.js"></script>
+
 <script src="../../admincon/dist/js/js_includes/course.js"></script>
 <script src="../../admincon/dist/js/js_includes/cat.js"></script>
 <script src="../../admincon/dist/js/js_includes/event.js"></script>
+<script src="../../admincon/dist/js/js_includes/advert.js"></script>
+<script src="../../admincon/dist/js/js_includes/testimonial.js"></script>
+<script src="../../admincon/dist/js/js_includes/page_url.js"></script>
+
+
+
 
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
@@ -36,3 +43,4 @@
 <script src="../../admincon/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="../../admincon/dist/js/pages/dashboard.js"></script>
+

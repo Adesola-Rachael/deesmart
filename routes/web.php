@@ -9,7 +9,10 @@ use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
-
+use App\Http\Controllers\RegEventController;
+use App\Http\Controllers\AdvertController;
+use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\PageUrlController;
 use App\Mail\ContactEmail;
 
 /*
@@ -40,7 +43,7 @@ Route::get('/about',[PagesController::class,'about'] );
 // Route::get('courses',[PagesController::class,'course'] );
 Route::get('/book',[PagesController::class,'books'] );
 Route::get('book_details/{id}',[PagesController::class,'details'] );
-Route::get('details/{id}',[PagesController::class,'details'] );
+Route::get('details/{book_id}',[PagesController::class,'details'] );
 
 
 Route::get('/event',[PagesController::class,'getEvent'] ); 
@@ -51,6 +54,8 @@ Route::get('skill_details/{id}',[PagesController::class,'skillDetails'] );
 
 // contact_formcontact_form
 Route::post('/contact_form',[ContactController::class,'sendContact'] );
+Route::post('/attendEvent',[RegEventController::class,'attendEvent'] );
+
 
 
 
@@ -96,6 +101,31 @@ Route::get('/admin_section/manage_event',[EventController::class,'getManageEvent
 // Route::put('/delete-cat/{id}',[CategoryController::class, 'TrashCategory(']);
 // Route::put('/updatecat{id}',[CourseCatController::class, 'updatecat']);
 
+// advert
+
+Route::get('/admin_section/manage_advert',[AdvertController::class,'getManageAdvert'] );
+ Route::post('/advert',[AdvertController::class, 'createAdvert']);
+// Route::get('/getcatById/{id}',[CategoryController::class, 'getcatId']);
+// Route::put('/delete-cat/{id}',[CategoryController::class, 'TrashCategory(']);
+// Route::put('/updatecat{id}',[CourseCatController::class, 'updatecat']);
+
+
+// testimonial
+
+Route::get('/admin_section/manage_testimonial',[TestimonialController::class,'getManageTestimonial'] );
+ Route::post('/testimonial',[TestimonialController::class, 'createTestimonial']);
+// Route::get('/getcatById/{id}',[CategoryController::class, 'getcatId']);
+// Route::put('/delete-cat/{id}',[CategoryController::class, 'TrashCategory(']);
+// Route::put('/updatecat{id}',[CourseCatController::class, 'updatecat']);
+
+// page_url
+
+Route::get('/admin_section/manage_page_url',[PageUrlController::class,'getManagePageUrl'] );
+ Route::post('/pageurl',[PageUrlController::class, 'createPageUrl']);
+// Route::get('/getcatById/{id}',[CategoryController::class, 'getcatId']);
+// Route::put('/delete-cat/{id}',[CategoryController::class, 'TrashCategory(']);
+// Route::put('/updatecat{id}',[CourseCatController::class, 'updatecat']);
+
 
 // Email
 
@@ -133,3 +163,9 @@ Route::get('senda-email', function(){
 // MAIL_ENCRYPTION=tls
 // # MAIL_FROM_ADDRESS="hello@example.com"
 // # MAIL_FROM_NAME="${APP_NAME}"
+
+
+
+Route::get('/search',[PagesController::class,'searchBook'] ); 
+
+Route::get('/book_text',[PagesController::class,'bookText'] ); 

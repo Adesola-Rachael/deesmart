@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Response;
+
 use Illuminate\Support\Facades\Hash;
 use Stevebauman\Location\Facades\Location;
 
@@ -9,45 +11,68 @@ use App\Models\book;
 use App\Models\category;
 use App\Models\event;
 use App\Models\ip_data;
+use App\Models\page_url;
+use App\Models\advert;
+use Illuminate\Support\Facades\View;
+
+
 use DB;
 
 class PagesController extends Controller
 {
     //
+public function __construct()
+    {
+
+        //
+        $pageurl=page_url::get();
+        View::share('pageurl', $pageurl);
+
+        // return  $pageUrl;
+
+    }
+
+
+    
+
+    
+  
+    
+
+
+
     public function home(Request $request){
+        $event_empty="No Event For Now";
+        $event_empty_detail=" ";
+
         $page_title="Readal | Home";
-        $books=book::get();
+
+         $cat_id=$request->input('type');
+
+
+        if($request->input('type'==1)){ 
+            $books=book::select("*")->where('category_id',1)->get();
+
+            // $books=book::orderBy('category_id',1);
+            // $organise="Most Visited";
+            
+        }
+        else{
+             $books=book::get(); 
+        }
+         
+
+
+
+        $events=event::get();
+        $adverts=advert::get();
+
         $cat=category ::get();
 
         $visit=new ip_data();
          $ip=$request->ip();
         // $ip="162.159.24.227";
-         $currentUserInfo = Location::get($ip);
-
-        //  <h4>IP: {{ $currentUserInfo->ip }}</h4>
-        //         <h4>Country Name: {{ $currentUserInfo->countryName }}</h4>
-        //         <h4>Country Code: {{ $currentUserInfo->countryCode }}</h4>
-        //         <h4>Region Code: {{ $currentUserInfo->regionCode }}</h4>
-        //         <h4>Region Name: {{ $currentUserInfo->regionName }}</h4>
-        //         <h4>City Name: {{ $currentUserInfo->cityName }}</h4>
-        //         <h4>Zip Code: {{ $currentUserInfo->zipCode }}</h4>
-        //         <h4>Latitude: {{ $currentUserInfo->latitude }}</h4>
-        //         <h4>Longitude: {{ $currentUserInfo->longitude }}</h4>
-        //     @endif
-
-         
-        // $ip =Hash::make($request->ip());
-        // $ip="12345";
-
-        // $time_visited=0;
-        // $select_ip = DB::select('select * from ip_datas where ip_address ='.$ip);
-
-        // data = DB::table('borrowers')
-        // ->join('loans', 'borrowers.id', '=', 'loans.borrower_id')
-        // ->select('borrowers.*', 'loans.*')   
-        // ->where('loan_officers', 'like', '%' . $officerId . '%')
-        // ->where('loans.maturity_date', '<', date("Y-m-d"))
-        // ->get();
+        $currentUserInfo = Location::get($ip);
         $select_ip = DB::table('ip_datas')->where('ip_address', '=', $ip)->get();
        
 
@@ -55,11 +80,6 @@ class PagesController extends Controller
         if (ip_data::where('ip_address', $ip)->exists()) {
             ip_data::where('ip_address', $ip)->get()->first()->increment('time_visited');
 
-            // user found
-            // $time_visited=2;
-            // $visit->time_visited= $time_visited;
-            // $visit->update();
-            // DB::update('update ip_datas time_visited = 100 where ip_address = ?', ['John']);
          }else{
              $visit->ip_address= $ip;
              $visit->countryName= $currentUserInfo->countryName;
@@ -73,28 +93,15 @@ class PagesController extends Controller
          $visit->save();
          }
 
-
-        // DB::insert('insert into users (id, name) values (?, ?)', [1, 'Dayle']);
-        // $ip_data=DB::table('ip_datas')->where('ip_address','=',$ip)->get();
-         
-        //  if($select_ip->exists() ){
-        //     $time_visited=2;
-        //     $visit->time_visited= $time_visited;
-
-        //  }
         
 
         $event_empty="Book Not Found";
         $event_empty_detail="Reach out to the admin for more details";
 
         $skills=book::select("*")->where('price','>', 0)->get();
-        return  view('index',compact('event_empty_detail','event_empty','books','skills','cat','page_title'));
+        return  view('index',compact('event_empty_detail','event_empty','adverts','events','books','skills','cat','page_title'));
     }
     
-    // public function getBookById($id){
-    //     $books=book::findorfail($id);
-    //     return  $books;
-    // }
 
     public function about(){
         $page_title="Readal | About";
@@ -109,7 +116,7 @@ class PagesController extends Controller
         return  view('contact',compact('title','title_details','page_title'));
     }
 
-    public function books(){
+    public function books(Request $request){
         
         $event_empty="!opps. No Book Found";
         $event_empty_detail="Reach out to the admin for more details ";
@@ -117,7 +124,10 @@ class PagesController extends Controller
         $page_title="Readal | Book";
         $title="All Books";
         $title_details="Our collection of books contain skill acquisition, business growth, health academics, career advancement and many more. ";
-        $books=book::get();
+        $adverts=advert::get();
+        
+        $category='223456';
+        $books=book::orderBy('created_at','asc')->simplePaginate(10);
         $cat=category ::get();
 
         // $search = $request->input('search');
@@ -127,7 +137,7 @@ class PagesController extends Controller
 
         // }
 
-        return  view('book',compact('books','cat','title','title_details','page_title','event_empty_detail','event_empty'));
+        return  view('book',compact('category','books','cat','title','adverts','title_details','page_title','event_empty_detail','event_empty'));
     }
 
     public function getEvent(){
@@ -148,11 +158,13 @@ class PagesController extends Controller
     // }
     
 
-    public function details($id){
+    public function details($book_id){
 
-        $books=book::findorfail($id);
+        $books=book::findorfail($book_id);
 
         $cat=category ::get();
+        $adverts=advert::get();
+
 
         $skill_title="Dedicated Programs";
         $skill_title_details="Gain access to our high income skills and paid ebook. These skill can be learned at the comfor of your home and most of the businesses can be monetized online. ";
@@ -163,7 +175,7 @@ class PagesController extends Controller
         
         
 
-        return  view('details',compact('books','cat','title','title_details','page_title','skill_title','skill_title_details'));
+        return  view('details',compact('books','adverts','cat','title','title_details','page_title','skill_title','skill_title_details'));
     }
 
     public function search(Request $request){
@@ -174,23 +186,7 @@ class PagesController extends Controller
         ->orWhere('body', 'LIKE', "%{$search}%")
         ->get();
     }
-    // public function details($id){
-
-    //     $books=book::findorfail($id);
-
-    //     $cat=category ::get();
-
-    //     $skill_title="Dedicated Programs";
-    //     $skill_title_details="Gain access to our high income skills and paid ebook. These skill can be learned at the comfor of your home and most of the businesses can be monetized online. ";
-
-    //     $page_title="Readal | book_details";
-    //     $title="Book Details";
-    //     $title_details="Download books for free and have access to our free webiners and skill acquisition programs.. ";
-        
-        
-
-    //     return  view('book_details',compact('books','cat','title','title_details','page_title'));
-    // }
+    
     public function skillbook(){
         $page_title="Readal | skills_book";
 
@@ -219,5 +215,93 @@ class PagesController extends Controller
         return  view('skill_details',compact('books','cat','title','title_details','page_title','skill_title', 'skill_title_details' ));
     }
     
+
+
+
+
+
+    public function bookText(){
+        $books=book::orderBy('created_at','asc')->simplePaginate(10);
+        $cat=category ::get();
+        return view('book_text',compact('books','cat'));
+    }
+    public function searchBook(Request $request){
+        // $books = book::query()->with('category')->get();
+
+        //         return response()->json([
+        //                 'data'=>$books,
+        // $search=$request->search;
+        // if(!$search){
+           
+        //     ]); 
+        // }else{
+        //     $books = book::query()->with('category')->get();
+
+        // return response()->json([
+        //         'data'=>$books,
+        //     ]); 
+        // }
+
+
+        // $books = book::query()->with('category')->get();
+
+        // return response()->json([
+        //         'data'=>$books,
+        //     ]);   
+            
+            if($search=$request->search){
+                $books = book::query()->with('category')
+                ->where('book_title', 'LIKE', "%{$search}%")
+                ->orWhere('book_desc', 'LIKE', "%{$search}%") 
+                ->get();
+        
+                return response()->json([
+                    'data'=>$books,
+                ]);
+            }
+            else{
+                 $books = book::query()->with('category')->get();
+
+                    return response()->json([
+                            'data'=>$books,
+                        ]);  
+            }
+
+        
+
+        
+        // if($search=$request->search){
+        //     $cat=category ::get();
+        
+        // $books = book::query()->with('category')
+        // ->where('book_title', 'LIKE', "%{$search}%")
+        // ->orWhere('book_desc', 'LIKE', "%{$search}%") 
+        // ->get();
+
+        // return response()->json([
+        //     'data'=>$books,
+        // ]);
+        // }elseif($search=$request->search){
+        //     $cat=category ::get();
+            
+        
+        // $books = book::query()->with('category')->get();
+
+        // return response()->json([
+        //         'data'=>$books,
+        //     ]);
+        // }else{
+        //     return response()->json([
+        //         'data'=>$books,
+        //     ]);
+        // }
+
+        
+        // $books=book::orderBy('created_at','asc')->simplePaginate(10);
+        // $cat=category ::get();
+        // return view('book_text',compact('books','cat'));
+    }
+
+
     
 }

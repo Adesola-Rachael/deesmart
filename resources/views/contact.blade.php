@@ -85,3 +85,52 @@
 
   </main><!-- End #main -->
   @endsection
+
+  @push('custom-scripts')
+  <script>
+    //contact message
+
+$(document).on('click','.send_message',function(e){
+  e.preventDefault();
+  console.log('clicked')
+  const data=$('#contact_form').serialize();
+
+  console.log(data);
+
+  $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $.ajax({
+    url:"/contact_form",
+    type:"POST",
+     data:data,
+    success:function(response){
+      console.log(response);
+      // $('#SendMessage').modal('hide');
+      if(response.status==200){
+        $('#SendSuccessMessage').html(
+        '<div class="alert alert-success alert-dismissible">'+
+        // '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
+        '<h5><i class="icon fas fa-thumbs-up"></i>' +response.message+
+        '</h5></div>'
+        );
+        // window.location="book_book";
+      }else{
+        console.log(response.message);
+        var message=JSON.stringify(response.message)
+        $('#SendSuccessMessage').html(
+        '<div class="alert alert-danger alert-dismissible">'+
+        // '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
+        '<h5><i class="icon fas fa-ban"></i>Error!</h5>' +message+
+        '</div>'
+        );
+      }
+     
+    }
+    });
+
+});
+  </script>
+  @endpush
